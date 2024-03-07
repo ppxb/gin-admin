@@ -1,0 +1,13 @@
+[Global]
+AppName = "ginadmin"
+Version = "0.1.0"
+Debug = true
+
+[Global.Http]
+Addr = ":8848"
+ShutdownTimeout = 10
+ReadTimeout = 60
+WriteTimeout = 60
+IdleTimeout = 10
+SSLCertFile = ""
+SSLKeyFile = ""
