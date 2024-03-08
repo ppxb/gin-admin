@@ -1,6 +1,7 @@
 package utils
 
 const (
+	ReqBodyKey = "req-body"
 	ResBodyKey = "res-body"
 )
 

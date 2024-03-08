@@ -5,6 +5,7 @@ import "gin-admin/pkg/logger"
 type Config struct {
 	Global Global
 	Logger logger.Options
+	Util   Util
 }
 
 type Global struct {
@@ -27,4 +28,22 @@ type GlobalHttp struct {
 	IdleTimeout     int    `default:"60"`
 	SSLCertFile     string
 	SSLKeyFile      string
+}
+
+type Util struct {
+	Prometheus *Prometheus
+}
+
+type Prometheus struct {
+	Enable         bool
+	Port           int    `default:"9100"`
+	BasicUsername  string `default:"admin"`
+	BasicPassword  string `default:"admin"`
+	LogApis        []string
+	LogMethods     []string
+	DefaultCollect bool
+}
+
+func (c *Config) IsDebug() bool {
+	return c.Global.Debug
 }
