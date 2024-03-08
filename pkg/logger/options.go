@@ -35,8 +35,8 @@ type HookOptions struct {
 	Type      string
 	MaxBuffer int
 	MaxThread int
-	Options   map[string]interface{}
-	Extra     map[string]interface{}
+	Options   map[string]string
+	Extra     map[string]string
 }
 
 type HookHandlerFunc func(ctx context.Context, hookOptions *HookOptions) (*Hook, error)

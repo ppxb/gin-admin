@@ -3,9 +3,10 @@ package config
 import "gin-admin/pkg/logger"
 
 type Config struct {
-	Global Global
-	Logger logger.Options
-	Util   Util
+	Global     Global
+	Logger     logger.Options
+	DataSource DataSource
+	Util       Util
 }
 
 type Global struct {
@@ -28,6 +29,30 @@ type GlobalHttp struct {
 	IdleTimeout     int    `default:"60"`
 	SSLCertFile     string
 	SSLKeyFile      string
+}
+
+type DataSource struct {
+	DB DB
+}
+
+type DB struct {
+	Debug        bool
+	Type         string `default:"sqlite3"`
+	DSN          string `default:"data/ginadmin.db"`
+	MaxLifeTime  int    `default:"86400"`
+	MaxIdleTime  int    `default:"3600"`
+	MaxOpenConns int    `default:"100"`
+	MaxIdleConns int    `default:"50"`
+	TablePrefix  string `default:""`
+	AutoMigrate  bool
+	Resolver     []DBResolver
+}
+
+type DBResolver struct {
+	DBType   string
+	Sources  []string
+	Replicas []string
+	Tables   []string
 }
 
 type Util struct {

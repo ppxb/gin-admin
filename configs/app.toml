@@ -11,3 +11,14 @@ WriteTimeout = 60
 IdleTimeout = 10
 SSLCertFile = ""
 SSLKeyFile = ""
+
+[Util]
+
+[Util.Prometheus]
+Enable = false
+Port = 9100
+BasicUsername = "admin"
+BasicPassword = "admin"
+LogApis = []
+LogMethods = []
+DefaultCollect = true

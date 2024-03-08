@@ -30,10 +30,11 @@ func Run(ctx context.Context, options Options) error {
 	config.MustLoad(options.Configs)
 
 	// init logger
-	cleanLoggerFn, err := logger.WithConfig(ctx, &config.C.Logger)
+	cleanLoggerFn, err := logger.WithConfig(ctx, &config.C.Logger, initLoggerHook)
 	if err != nil {
 		return err
 	}
+
 	ctx = logger.NewTag(ctx, logger.TagKeyMain)
 	logger.Context(ctx).Info(
 		"starting service...",
